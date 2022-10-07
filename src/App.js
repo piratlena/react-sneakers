@@ -1,20 +1,18 @@
-import { Component } from 'react';
-import Card from './components/Card';
+
+import Card from './components/Card/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
 
-class App extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      data: [
-       { mark: '../public/img/btn-heart.svg', sneakers: '/public/img/sneakers/sneakers_1.jpg', descr: 'Мужские Кроссовки Nike Blazer Mid Suede', textPrice: 'Цена', price: 1299}
-      ]
-    }
-  }
-  render () {
-    const {data} = this.state;
-    return (
+const arr = [
+  { mark: '/img/btn-heart-red.svg', imageUrl: '/img/sneakers/sneakers_1.jpg', descr: 'Мужские Кроссовки Nike Blazer Mid Suede', textPrice: 'Цена', price: 1299},
+  { mark: '/img/btn-heart.svg', imageUrl: '/img/sneakers/sneakers_2.jpg', descr: 'Мужские Кроссовки Nike Air Max 270', textPrice: 'Цена', price: 1199},
+  { mark: '/img/btn-heart.svg', imageUrl: '/img/sneakers/sneakers_3.jpg', descr: 'Мужские Кроссовки Nike Blazer Mid Suede', textPrice: 'Цена', price: 8499},
+  { mark: '/img/btn-heart.svg', imageUrl: '/img/sneakers/sneakers_4.jpg', descr: 'Кроссовки Puma X Aka Boku Future Rider', textPrice: 'Цена', price: 8999}
+ ]
+
+function App () {
+  
+   return (
       <div className="wrapper clear">
         <Header/>
         <Drawer/>
@@ -30,15 +28,24 @@ class App extends Component {
         </div>
 
         <div className="d-flex">
-                  <Card data={data}/>
+            {
+              arr.map((obj) => (
+                <Card
+                mark = {obj.mark} 
+                imageUrl={obj.imageUrl}
+                descr={obj.descr}  
+                textPrice={obj.textPrice}
+                price={obj.price}
+                />
+              ))
+            }
 
         </div>
         
       </div>
     </div>
     )
-
-  }
+ 
     
 }
 
